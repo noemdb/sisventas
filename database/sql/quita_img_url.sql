@@ -1,0 +1,1 @@
+UPDATE profiles SET url_img='' where id<100;
