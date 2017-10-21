@@ -1,6 +1,6 @@
 <table class="table table-striped" id="table-data-user">
     <tr>
-        <th>N</th>
+        <th class="hidden-xs">N</th>
         <th>Usuario</th>
         <th class="hidden-xs hidden-sm">Email</th>
         <th class="hidden-xs">Estado</th>
@@ -14,7 +14,7 @@
     <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
         <tr data-id="<?php echo e($user->id); ?>" data-profile="<?php echo e($user->id_profile); ?>">
-            <td><?php echo e($n++); ?></td>
+            <td class="hidden-xs"><?php echo e($n++); ?></td>
             <td id="username">
                  <?php if($user->is_active=="Desactivo"): ?>
                     <span class="text text-danger"><?php echo e($user->username); ?></span>

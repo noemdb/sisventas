@@ -1,6 +1,6 @@
 <table class="table table-striped" id="table-data-user">
     <tr>
-        <th>N</th>
+        <th class="hidden-xs">N</th>
         <th>Usuario</th>
         <th class="hidden-xs hidden-sm">Email</th>
         <th class="hidden-xs">Estado</th>
@@ -14,7 +14,7 @@
     @foreach($users as $user)
         
         <tr data-id="{{$user->id}}" data-profile="{{$user->id_profile}}">
-            <td>{{$n++}}</td>
+            <td class="hidden-xs">{{$n++}}</td>
             <td id="username">
                  @if($user->is_active=="Desactivo")
                     <span class="text text-danger">{{$user->username}}</span>

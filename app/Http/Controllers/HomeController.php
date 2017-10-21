@@ -25,11 +25,16 @@ class HomeController extends Controller
     public function index()
     {
         //dd(Auth::user());
-        // $user = Auth::user()->toArray();
-        // //dd($user);
-        // if($user['is_admin']=='1')
-        //     return view('admin/users');
-        // else
+        
+        $user_is_admin = '';
+        if(!empty(Auth::user()->profile->is_admin)){
+            $user_is_admin = Auth::user()->profile->is_admin;
+        }
+        
+        if($user_is_admin=='Administrador')
+            // return redirect()->route('users.home');
+            return redirect()->route('users.index');
+        else
             return view('home');
 
         

@@ -3,61 +3,60 @@
 @section('content')
 @include('admin.modal.operok')
 @include('admin.modal.opernook')
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3>
-                        Listados de Perfiles eliminados<br>
-                        <small class="text-default">Se encontraron {{$profiles->total()}} Perfiles</small>
-                        <div class="btn-group pull-right">
-                            <a title="Crear nuevo Usuario" class="btn btn-primary" href="{{ route('profiles.create') }}" role="button">
-                                <span class="ion-person-add" aria-hidden="true"></span>
-                            </a>
+<div class="container-fluid">
 
-                            <a title="Listado de Perfiles" class="btn btn-info" href="{{ route('profiles.index') }}" role="button">
-                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                            </a>
-                        </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3>
+                Listados de Perfiles eliminados<br>
+                <small class="text-default">Se encontraron {{$profiles->total()}} Perfiles</small>
+                
+                <div class="btn-group pull-right">
+                    <a title="Crear nuevo Usuario" class="btn btn-primary" href="{{ route('profiles.create') }}" role="button">
+                        <span class="ion-person-add" aria-hidden="true"></span>
+                    </a>
 
-                    </h3>
+                    <a title="Listado de Perfiles" class="btn btn-info" href="{{ route('profiles.index') }}" role="button">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    </a>
                 </div>
+                
 
-                <div class="panel-body">
+            </h3>
+        </div>
 
-                    {{-- Mensaje flash sobreo operaciones con base de datos --}}
-                    @if (Session::has('operp_ok'))
-                        <div class="alert alert-success alert-dismissible show" role="alert" align="center">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </button>
-                            {{Session::get('operp_ok')}}.
-                        </div>
-                    @endif
+        <div class="panel-body">
 
-                    {{-- INI Barra de busqueda Filtros --}}
-                    @include('admin.profiles.partials.field_search',['route'=>'profiles.trash'])
-                    {{-- FIN Barra de busqueda Filtros --}}
-
-                    {{-- botones de paginacon --}}
-                    <div class="row" align="right">
-                      <div class="col-md-12">
-                          {{ $profiles->links() }} 
-                      </div>
-                    </div>    
-
-                    {{-- partial con el listado de los Perfiles --}}
-                    @include('admin.profiles.partials.table')
-
-                    {{-- botones de paginacon --}}
-                    <div align="right">                        
-                        {{ $profiles->links() }}
-                    </div>
-
-
+            {{-- Mensaje flash sobreo operaciones con base de datos --}}
+            @if (Session::has('operp_ok'))
+                <div class="alert alert-success alert-dismissible show" role="alert" align="center">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    {{Session::get('operp_ok')}}.
                 </div>
+            @endif
+
+            {{-- INI Barra de busqueda Filtros --}}
+            @include('admin.profiles.partials.field_search',['route'=>'profiles.trash'])
+            {{-- FIN Barra de busqueda Filtros --}}
+
+            {{-- botones de paginacon --}}
+            <div class="row" align="right">
+              <div class="col-md-12">
+                  {{ $profiles->links() }} 
+              </div>
+            </div>    
+
+            {{-- partial con el listado de los Perfiles --}}
+            @include('admin.profiles.partials.table')
+
+            {{-- botones de paginacon --}}
+            <div align="right">                        
+                {{ $profiles->links() }}
             </div>
+
+
         </div>
     </div>
 </div>

@@ -14,8 +14,11 @@
     {!! Html::Style('bootstrap/css/bootstrap.min.css') !!}
     {{-- {!! Html::Style('bootstrap/css/custom.css') !!} --}}
     
-    {!! Html::Style('css/doc_bt_custom.css') !!}
-    {!! Html::Style('ionicons/ionicons-master/css/ionicons.min.css') !!}
+    {{-- {!! Html::Style('css/doc_bt_custom.css') !!} --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/doc_bt_custom.css') }}" media="none" onload="if(media!='all')media='all'">
+    
+    {{-- {!! Html::Style('ionicons/ionicons-master/css/ionicons.min.css') !!} --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('ionicons/ionicons-master/css/ionicons.min.css') }}" media="none" onload="if(media!='all')media='all'">
     {{-- {!! Html::Style('css/sidebar.css') !!} --}}
 
     <!-- Scripts header -->
@@ -29,7 +32,7 @@
     <div id="app" class="wrapper">
         <div class="row row-offcanvas row-offcanvas-left">
 
-            @include('navbar_main')
+            @include('navbar.navbar_admin')
 
             {{-- @include('sidebar_main') --}}
 
@@ -46,7 +49,10 @@
 
     <!-- Scripts -->
 
-    {!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js') !!}
+    {{-- {!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js') !!} --}}
+    {{-- {!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js') !!} --}}
+    {!! Html::script('js/jquery.min.js') !!}
+    {{-- {!! Html::script('js/jquery.popup-box.js') !!} --}}
     {!! Html::script('bootstrap/js/bootstrap.min.js') !!}
     
     {{-- {!! Html::script('js/doc.js') !!} --}}

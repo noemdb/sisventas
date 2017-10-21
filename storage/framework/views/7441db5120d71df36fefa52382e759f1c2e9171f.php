@@ -4,55 +4,52 @@
 
 <?php echo $__env->make('admin.modal.operok', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php echo $__env->make('admin.modal.opernook', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3>
-                        Listados de Perfiles Registrados<br>
-                        <small class="text-default">Se encontraron <?php echo e($profiles->total()); ?> Perfiles</small>
-                        <div class="btn-group pull-right">
-                            <a title="Crear nuevo Usuario" class="btn btn-primary" href="#" data-toggle="modal" data-target="#user-create" role="button">
-                                <span class="ion-person-add" aria-hidden="true"></span>
-                            </a>
-                            <a title="Listado de Usuarios" class="btn btn-info" href="<?php echo e(route('users.index')); ?>" role="button">
-                                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                            </a>
-                            <a title="Eliminados" class="btn btn-danger" href="<?php echo e(route('profiles.trash')); ?>" role="button">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                            </a>
-                        </div>
-
-                    </h3>
+<div class="container-fluid">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3>
+                Listados de Perfiles Registrados<br>
+                <small class="text-default">Se encontraron <?php echo e($profiles->total()); ?> Perfiles</small>
+                
+                <div class="btn-group pull-right">
+                    <a title="Crear nuevo Usuario" class="btn btn-primary" href="#" data-toggle="modal" data-target="#user-create" role="button">
+                        <span class="ion-person-add" aria-hidden="true"></span>
+                    </a>
+                    <a title="Listado de Usuarios" class="btn btn-info" href="<?php echo e(route('users.index')); ?>" role="button">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    </a>
+                    <a title="Eliminados" class="btn btn-danger" href="<?php echo e(route('profiles.trash')); ?>" role="button">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
                 </div>
 
-                <div class="panel-body">
-                    <?php echo $__env->make('admin.users.modal.createuser', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                    
-                    
-                    <?php if(Session::has('operp_ok')): ?>
-                        <div class="alert alert-success alert-dismissible show" role="alert" align="center">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </button>
-                            <?php echo e(Session::get('operp_ok')); ?>.
-                        </div>
-                    <?php endif; ?>
+            </h3>
+        </div>
 
-                    
-                    <?php echo $__env->make('admin.profiles.partials.field_search',['route'=>'profiles.index'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-                    
-
-                    
-                    <?php echo $__env->make('admin.profiles.partials.table', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-                    
-                    <div align="right">                        
-                        <?php echo e($profiles->links()); ?>
-
-                    </div>
+        <div class="panel-body">
+            <?php echo $__env->make('admin.users.modal.createuser', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            
+            
+            <?php if(Session::has('operp_ok')): ?>
+                <div class="alert alert-success alert-dismissible show" role="alert" align="center">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <?php echo e(Session::get('operp_ok')); ?>.
                 </div>
+            <?php endif; ?>
+
+            
+            <?php echo $__env->make('admin.profiles.partials.field_search',['route'=>'profiles.index'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            
+
+            
+            <?php echo $__env->make('admin.profiles.partials.table', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            
+            <div align="right">                        
+                <?php echo e($profiles->links()); ?>
+
             </div>
         </div>
     </div>

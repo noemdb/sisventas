@@ -32,7 +32,7 @@ class Profile extends Authenticatable
 
     public function getFullNameAttribute()
     {
-    	return $this->firstname .' ' . $this->lastname;
+      return $this->firstname .' ' . $this->lastname;
     }
 
     public function setCreated_atAtAttribute( $value ) {

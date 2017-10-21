@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body" align="center">
         <div class="text text-danger text-center">
-          <strong id="msg_modal_admin_opernook">Operación NO fue realizada exitosamente.</strong>        
+          <span id="msg_modal_admin_opernook">Operación NO fue realizada exitosamente.</span>        
         </div>
         <br>
         <a href="#" class="btn btn-success" id="btn-acept-opernook">Aceptar</a>

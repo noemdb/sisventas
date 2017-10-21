@@ -11,6 +11,7 @@ use App\Profile;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -93,17 +94,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(CreateUserRequest $request)
-    // {
 
-    //     $user = User::create($request->all());
-
-    //     Session::flash('operp_ok',trans('db_oper_result.user_create_ok'));
-
-    //     return redirect()->route('users.index');
-    // }
-
-    //usando ajax
     public function store(CreateUserRequest $request)
     {
 
@@ -119,6 +110,9 @@ class UserController extends Controller
                 "messenge"=>$messenge
             ]);
         }
+        
+        Session::flash('operp_ok',trans('db_oper_result.user_create_ok'));
+        return redirect()->route('users.index');
     }
 
 
@@ -157,25 +151,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(EditUserRequest $request, $id)
-    // {
-
-    //     //dd($request);
-    //     $user = User::findOrFail($id);
-    //     $user->fill($request->all());
-    //     $user->save();
-    //     Session::flash('operp_ok',trans('db_oper_result.user_update_ok'));
-    //     return redirect()->route('users.index');
-        
-    // }
-
-
     public function update(EditUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        $juser = $user;
+        $old_user = clone $user;
         $user->fill($request->all());
         $user->save();
+        // Log::info('Update user.', ['data_old' => $old_user, 'data_new' => $user]);
+
         $messenge = trans('db_oper_result.user_update_ok');
 
         if($request->ajax()){
@@ -186,6 +169,8 @@ class UserController extends Controller
                 "messenge"=>$messenge
             ]);
         }
+        Session::flash('operp_ok',trans('db_oper_result.user_update_ok'));
+        return redirect()->route('users.index');
         
     }
 
@@ -199,11 +184,16 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        $profile = $user->profile;
+        $old_user = clone $user;
+
+        $profile = $user->profile;        
 
         $user->delete();
+        // Log::info('Destroy user.', ['data_old' => $old_user, 'data_new' => $user]);
         if(isset($profile->id)){
+            $old_profile = clone $profile;
             $profile->delete();
+            // Log::info('Destroy profile.', ['data_old' => $old_user, 'data_new' => $user]);
         }
 
         $messenge = trans('db_oper_result.user_destroy_ok');
@@ -212,7 +202,7 @@ class UserController extends Controller
             return $messenge;
         }
         
-        $messenge = trans('db_oper_result.user_destroy_nook');
+        $messenge = trans('db_oper_result.user_destroy_ok');
         Session::flash('operp_ok',$messenge.' -> ('.$user->username.')');
         return redirect()->route('users.index');
     }
@@ -241,7 +231,7 @@ class UserController extends Controller
             return $messenge;
         }
 
-        $messenge = trans('db_oper_result.user_restored_nook');
+        $messenge = trans('db_oper_result.user_restored_ok');
         Session::flash('operp_ok',$messenge.' -> ('.$user->username.')');
         return \Redirect::route( "users.trash" );
     }
@@ -270,7 +260,6 @@ class UserController extends Controller
             return $messenge;
         }
 
-        $messenge = trans('db_oper_result.user_force_destroy_ok');
         Session::flash('operp_ok',$messenge.' -> ('.$user->username.')');
         return redirect()->route('users.trash');
     }

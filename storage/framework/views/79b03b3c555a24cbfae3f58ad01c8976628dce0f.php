@@ -21,6 +21,8 @@
     
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('ionicons/ionicons-master/css/ionicons.min.css')); ?>" media="none" onload="if(media!='all')media='all'">
     
+    <?php echo Html::Style('css/menu-level.css'); ?>
+
 
     <!-- Scripts header -->
     <script>
@@ -30,20 +32,20 @@
     </script>
 </head>
 <body>
-    <div id="app" class="wrapper">
-        <div class="row row-offcanvas row-offcanvas-left">
 
-            <?php echo $__env->make('navbar.navbar_admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <?php echo $__env->make('navbar.admin.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-            
+    <div class="container-fluid">
 
-            <div id="content">
-
-                <?php echo $__env->yieldContent('content'); ?>
-
+        <div class="row">
+            <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 sidebar">
+                <?php echo $__env->make('navbar.admin.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
-
+            <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 main">
+                <?php echo $__env->yieldContent('content'); ?> 
+            </div>
         </div>
+
     </div>
 
     <?php echo $__env->make('footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

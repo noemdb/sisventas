@@ -1,11 +1,11 @@
 <table class="table table-striped" id="table-data-profile">
     <tr>
-        <th>N</th>
+        <th class="hidden-xs">N</th>
         <th>Usuario</th>
-        <th class="hidden-xs">Nom. Completo</th>
-        <td align="center"><strong>Estado</strong></td>
-        <th class="hidden-xs" title="Tipo de usuario">Tipo</th>
-        <th class="hidden-xs" title="Roles">Roles</th>
+        <th class="hidden-xs hidden-sm">Nom. Completo</th>
+        <td class="hidden-xs" align="center"><strong>Estado</strong></td>
+        <th title="Tipo de usuario">Tipo</th>
+        <th title="Roles">Roles</th>
         
         <td align="right"><strong>Aciones</strong></td>
     </tr>
@@ -15,7 +15,7 @@
     <?php $__currentLoopData = $profiles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $profile): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         
         <tr data-id="<?php echo e($profile->id); ?>" data-user="<?php echo e($profile->user_id); ?>">
-            <td><?php echo e($n++); ?></td>
+            <td class="hidden-xs"><?php echo e($n++); ?></td>
             <td id="profilename">
                  <?php if($profile->is_active=="Desactivo"): ?>
                     <span class="text text-danger"><?php echo e($profile->username); ?></span>
@@ -24,7 +24,7 @@
                 <?php endif; ?>
 
             </td>
-            <td class="hidden-xs hidden-sm" id="email"><?php echo e($profile->fullname); ?></td>
+            <td class="hidden-xs hidden-sm" id="fullname"><?php echo e($profile->fullname); ?></td>
             <td class="hidden-xs alert alert-<?php echo e($profile->is_active); ?>" id="is_active">
                 <?php echo e($profile->is_active); ?>
 
@@ -34,7 +34,7 @@
 
             </td>
 
-            <td class="hidden-xs" id="rol">
+            <td id="rol">
                 <div class="label-group">
                     <span class="label label-user<?php echo e($profile->is_user1); ?>"><?php echo e($profile->is_user1); ?></span>
                     <span class="label label-user<?php echo e($profile->is_user2); ?>"><?php echo e($profile->is_user2); ?></span>

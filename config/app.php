@@ -41,6 +41,10 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    // INI nmdb
+    'log_queries' => env('LOG_QUERIES', false),
+    // FIN nmdb
+
     /*
     |--------------------------------------------------------------------------
     | Application URL

@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body" align="center">
         <div class="text text-success text-center">
-          <strong id="msg_modal_admin_operok">Operación realizada exitosamente.</strong>        
+          <span id="msg_modal_admin_operok">Operación realizada exitosamente.</span>        
         </div>
         <br>
         <a href="#" class="btn btn-success" id="btn-acept-operok">Aceptar</a>

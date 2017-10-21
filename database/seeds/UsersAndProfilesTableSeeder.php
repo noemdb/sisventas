@@ -12,6 +12,6 @@ class UsersAndProfilesTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\Profile::class)->times(100)->create();
+        factory(App\Profile::class)->times(25)->create();
     }
 }

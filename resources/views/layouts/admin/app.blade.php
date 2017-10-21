@@ -19,7 +19,8 @@
     
     {{-- {!! Html::Style('ionicons/ionicons-master/css/ionicons.min.css') !!} --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('ionicons/ionicons-master/css/ionicons.min.css') }}" media="none" onload="if(media!='all')media='all'">
-    {{-- {!! Html::Style('css/sidebar.css') !!} --}}
+    {{-- {!! Html::Style('css/simple-sidebar.css') !!} --}}
+    {!! Html::Style('css/menu-level.css') !!}
 
     <!-- Scripts header -->
     <script>
@@ -29,20 +30,20 @@
     </script>
 </head>
 <body>
-    <div id="app" class="wrapper">
-        <div class="row row-offcanvas row-offcanvas-left">
 
-            @include('navbar.navbar_admin')
+    @include('navbar.admin.navbar')
 
-            {{-- @include('sidebar_main') --}}
+    <div class="container-fluid">
 
-            <div id="content">
-
-                @yield('content')
-
+        <div class="row">
+            <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 sidebar">
+                @include('navbar.admin.sidebar')
             </div>
-
+            <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 main">
+                @yield('content') 
+            </div>
         </div>
+
     </div>
 
     @include('footer')

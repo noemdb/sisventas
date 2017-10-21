@@ -27,11 +27,8 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     public function setPasswordAttribute($value){
-        
         if (! empty($value)) {
-
             $this->attributes['password'] = bcrypt($value);
-
         }
     }
 
@@ -44,10 +41,20 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // INI relationships
     public function profile()
     {
         return $this->hasOne('App\Profile');
     }
+    public function statususer()
+    {
+        return $this->hasMany('App\StatusUser');
+    }
+    public function activity()
+    {
+        return $this->hasMany('App\Activity');
+    }
+    // INI relationships
 
     //funcion para la contruccion del query para los usuarios
     //Cuando se llama desde un formulario de busqueda

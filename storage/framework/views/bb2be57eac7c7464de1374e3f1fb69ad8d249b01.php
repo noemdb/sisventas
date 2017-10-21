@@ -48,9 +48,7 @@
 
                                 </form>
                             </li>
-                            <li>
-                                <a href="<?php echo e(route('users.index')); ?>">Listado de Usuarios</a>
-                            </li>
+                            
                         </ul>
                     </li>
                 <?php endif; ?>

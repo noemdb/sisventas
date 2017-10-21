@@ -78,6 +78,18 @@
                             Listado de Perfiles
                           </a>
                       </li>
+                      <li>
+                          <a href="<?php echo e(route('loggs.index')); ?>">
+                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            Listado de Logs
+                          </a>
+                      </li>
+                      <li>
+                          <a href="<?php echo e(route('statususer.index')); ?>">
+                            <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                            Listado de statususer
+                          </a>
+                      </li>
                   </ul>
               </li>
           <?php endif; ?>

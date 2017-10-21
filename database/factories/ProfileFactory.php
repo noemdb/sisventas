@@ -15,12 +15,12 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Profile::class, function (Faker $faker) {
 
-    $arr_roles = ['1'=>'1',''=>''];
+    $arr_roles = [''=>'','1'=>'1'];
     $arr_admin = ['Administrador'=>'Administrador','Usuario'=>'Usuario'];
     return [
         'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
-        'url_img' => $faker->imageUrl,
+        // 'url_img' => $faker->imageUrl,
         'is_admin' => array_rand($arr_admin,1),
         'is_user1' => array_rand($arr_roles,1),
         'is_user2' => array_rand($arr_roles,1),

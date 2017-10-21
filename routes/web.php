@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// \Debugbar::disable();
+// \Debugbar::enable();
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,7 +32,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','IsAdmin'],'namespace'=>'A
 
 	Route::resource('users','UserController');
 	Route::resource('profiles','ProfileController');
+	Route::resource('loggs','LoggsController');
+    Route::resource('statususer','StatusUserController');
+    Route::resource('activities','ActivityController');
 
 	Route::get('users/{id}/restore', ['as' =>  'users.restore', 'uses' => 'UserController@restore']);
 	Route::get('profiles/{id}/restore', ['as' =>  'profiles.restore', 'uses' => 'ProfileController@restore']);
 });
+
+

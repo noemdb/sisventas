@@ -1,11 +1,11 @@
 <table class="table table-striped" id="table-data-profile">
     <tr>
-        <th>N</th>
+        <th class="hidden-xs">N</th>
         <th>Usuario</th>
-        <th class="hidden-xs">Nom. Completo</th>
-        <td align="center"><strong>Estado</strong></td>
-        <th class="hidden-xs" title="Tipo de usuario">Tipo</th>
-        <th class="hidden-xs" title="Roles">Roles</th>
+        <th class="hidden-xs hidden-sm">Nom. Completo</th>
+        <td class="hidden-xs" align="center"><strong>Estado</strong></td>
+        <th title="Tipo de usuario">Tipo</th>
+        <th title="Roles">Roles</th>
         
         <td align="right"><strong>Aciones</strong></td>
     </tr>
@@ -15,7 +15,7 @@
     @foreach($profiles as $profile)
         
         <tr data-id="{{$profile->id}}" data-user="{{$profile->user_id}}">
-            <td>{{$n++}}</td>
+            <td class="hidden-xs">{{$n++}}</td>
             <td id="profilename">
                  @if($profile->is_active=="Desactivo")
                     <span class="text text-danger">{{$profile->username}}</span>
@@ -24,7 +24,7 @@
                 @endif
 
             </td>
-            <td class="hidden-xs hidden-sm" id="email">{{$profile->fullname}}</td>
+            <td class="hidden-xs hidden-sm" id="fullname">{{$profile->fullname}}</td>
             <td class="hidden-xs alert alert-{{$profile->is_active}}" id="is_active">
                 {{$profile->is_active}}
             </td>
@@ -32,7 +32,7 @@
                 {{$profile->is_admin}}
             </td>
 
-            <td class="hidden-xs" id="rol">
+            <td id="rol">
                 <div class="label-group">
                     <span class="label label-user{{$profile->is_user1}}">{{$profile->is_user1}}</span>
                     <span class="label label-user{{$profile->is_user2}}">{{$profile->is_user2}}</span>
